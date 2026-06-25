@@ -165,6 +165,38 @@
   footer p{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   footer .heart{font-family:'Cormorant Garamond',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:.95rem;color:var(--accent)}
 
+  /* experience timeline */
+  .timeline{position:relative;padding-left:34px}
+  .timeline::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:1px;background:var(--line)}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-31px;top:7px;width:11px;height:11px;border-radius:50%;background:var(--paper);border:1.5px solid var(--accent)}
+  .tl-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:4px}
+  .tl-head h3{font-family:'Italiana',serif;font-size:1.4rem;color:var(--ink);font-weight:400;letter-spacing:.01em}
+  .tl-head .when{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--accent);white-space:nowrap}
+  .tl-role{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+  .tl-item ul{list-style:none;padding:0}
+  .tl-item li{position:relative;padding-left:20px;font-size:.96rem;color:var(--ink-soft);margin-bottom:8px;line-height:1.6}
+  .tl-item li::before{content:"\276F";position:absolute;left:0;top:1px;color:var(--accent-soft);font-size:.7rem}
+  .tl-item li strong{color:var(--ink);font-weight:600}
+
+  /* awards */
+  .awards-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media(max-width:680px){.awards-grid{grid-template-columns:1fr}}
+  .award{background:var(--card);border:1px solid var(--line);padding:26px 28px;position:relative;transition:transform .25s,box-shadow .25s}
+  .award:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(90,70,40,.08)}
+  .award .seal{font-size:1.5rem;color:var(--gold);margin-bottom:12px;display:block}
+  .award h4{font-family:'Italiana',serif;font-size:1.25rem;color:var(--ink);font-weight:400;margin-bottom:6px;letter-spacing:.01em}
+  .award .yr{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:.95rem;color:var(--accent);margin-bottom:10px}
+  .award p{font-size:.9rem;color:var(--ink-soft);line-height:1.55}
+
+  /* book illustration */
+  .books-illus{display:block;margin:0 auto;max-width:340px;width:100%}
+  .books-illus .stroke{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+  .books-illus .fillsoft{fill:color-mix(in srgb,var(--accent) 8%,transparent)}
+  .books-illus .dot{fill:var(--gold)}
+  .reading .illus-wrap{display:flex;justify-content:center;align-items:center}
+
   .reveal{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}
   .reveal.in{opacity:1;transform:none}
   @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
@@ -178,8 +210,9 @@
     <nav class="nav">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#awards">Awards</a>
       <a href="#research">Research</a>
-      <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -224,10 +257,37 @@
 
 <section class="reading">
   <div class="wrap">
-    <div class="reveal">
-      <p class="quote"><span class="mk">&#8220;</span>A reader lives a thousand lives before she dies — and an engineer builds a few of them.<span class="mk">&#8221;</span></p>
+    <div class="illus-wrap reveal">
+      <svg class="books-illus" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" aria-label="Illustration of a stack of books">
+        <!-- bottom book -->
+        <rect class="stroke fillsoft" x="40" y="186" width="200" height="34" rx="4"/>
+        <line class="stroke" x1="40" y1="198" x2="240" y2="198"/>
+        <circle class="dot" cx="225" cy="203" r="3"/>
+        <!-- middle book -->
+        <rect class="stroke fillsoft" x="55" y="150" width="170" height="34" rx="4"/>
+        <line class="stroke" x1="55" y1="162" x2="225" y2="162"/>
+        <circle class="dot" cx="68" cy="167" r="3"/>
+        <!-- top book, slightly rotated -->
+        <g transform="rotate(-5 150 130)">
+          <rect class="stroke fillsoft" x="60" y="114" width="180" height="34" rx="4"/>
+          <line class="stroke" x1="60" y1="126" x2="240" y2="126"/>
+          <circle class="dot" cx="225" cy="131" r="3"/>
+        </g>
+        <!-- open book on top -->
+        <path class="stroke fillsoft" d="M70 90 Q110 74 150 90 Q190 74 230 90 L230 104 Q190 88 150 104 Q110 88 70 104 Z"/>
+        <line class="stroke" x1="150" y1="90" x2="150" y2="104"/>
+        <!-- little sparkle / idea -->
+        <g transform="translate(150 46)">
+          <line class="stroke" x1="0" y1="-16" x2="0" y2="-6"/>
+          <line class="stroke" x1="0" y1="6" x2="0" y2="16"/>
+          <line class="stroke" x1="-16" y1="0" x2="-6" y2="0"/>
+          <line class="stroke" x1="6" y1="0" x2="16" y2="0"/>
+          <circle class="dot" cx="0" cy="0" r="4"/>
+        </g>
+      </svg>
     </div>
     <div class="note reveal">
+      <p class="quote" style="margin-bottom:24px"><span class="mk">&#8220;</span>A reader lives a thousand lives before she dies — and an engineer builds a few of them.<span class="mk">&#8221;</span></p>
       <span class="lbl">Beyond the Code</span>
       <p>Long before I read papers, I read <strong>books</strong> — and I've never stopped. Reading taught me the patience that good research demands: sitting with a hard problem, following an argument to its end, noticing the small detail that changes everything.</p>
       <p>That love was recognised early with the <strong>Shera Pathok</strong> award, organised by Bisshoshahittik Kendro and Prothom Alo for excellence in reading.</p>
@@ -320,9 +380,73 @@
   </div>
 </section>
 
+<section id="experience" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-label"><span class="no">04</span><span class="ln"></span><span class="tag">Where I've Been</span></div>
+    <h2 class="sec-title">Experience</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <h3>East West University</h3>
+          <span class="when">Jan 2024 — Dec 2025</span>
+        </div>
+        <div class="tl-role">Undergraduate Teaching Assistant</div>
+        <ul>
+          <li>Supported <strong>8+ courses</strong> (including Data Mining, Probability &amp; Statistics, and OOP), reviewing and debugging <strong>100+ students'</strong> code and model-building exercises.</li>
+          <li>Authored rubrics, problem-solving guides, and lab walkthroughs on data preprocessing, model evaluation, and software testing.</li>
+          <li>Performed root-cause analysis on programming errors across four consecutive semesters, earning a <strong>Certificate of Excellence in Teaching Assistantship</strong>.</li>
+        </ul>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-head">
+          <h3>ACM NSysS 2025</h3>
+          <span class="when">Dec 2025</span>
+        </div>
+        <div class="tl-role">Conference Presenter &amp; Published Researcher</div>
+        <ul>
+          <li>Designed a controlled experimental methodology, built Selenium automation, analysed quantitative energy data, and presented to an international technical audience in Sylhet.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="awards">
+  <div class="wrap">
+    <div class="sec-label"><span class="no">05</span><span class="ln"></span><span class="tag">Honours</span></div>
+    <h2 class="sec-title">Awards</h2>
+    <div class="awards-grid">
+      <div class="award reveal">
+        <span class="seal">&#9733;</span>
+        <h4>Summa Cum Laude</h4>
+        <div class="yr">2025</div>
+        <p>Graduated with CGPA 3.98/4.00, no course retakes, completing the degree within four years.</p>
+      </div>
+      <div class="award reveal">
+        <span class="seal">&#9670;</span>
+        <h4>100% Merit Scholarship</h4>
+        <div class="yr">2022 — 2025</div>
+        <p>Full tuition-free merit scholarship for A+ in all subjects in both SSC and HSC, maintained throughout the program.</p>
+      </div>
+      <div class="award reveal">
+        <span class="seal">&#10047;</span>
+        <h4>Dean's List Tuition Waiver</h4>
+        <div class="yr">2023 — 2025</div>
+        <p>100% tuition waiver for maintaining CGPA above 3.90 for three consecutive academic years.</p>
+      </div>
+      <div class="award reveal">
+        <span class="seal">&#9998;</span>
+        <h4>Excellence in Teaching</h4>
+        <div class="yr">Fall 2025</div>
+        <p>Certificate of Excellence in Teaching Assistantship from the CSE Department, East West University.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="research">
   <div class="wrap">
-    <div class="sec-label"><span class="no">04</span><span class="ln"></span><span class="tag">Published &amp; In Progress</span></div>
+    <div class="sec-label"><span class="no">06</span><span class="ln"></span><span class="tag">Published &amp; In Progress</span></div>
     <h2 class="sec-title">Research</h2>
     <div class="pub reveal">
       <div class="venue">ACM · NSysS 2025 · Sylhet, Bangladesh</div>
@@ -342,7 +466,7 @@
 
 <section id="skills">
   <div class="wrap">
-    <div class="sec-label"><span class="no">05</span><span class="ln"></span><span class="tag">Toolkit</span></div>
+    <div class="sec-label"><span class="no">07</span><span class="ln"></span><span class="tag">Toolkit</span></div>
     <h2 class="sec-title">Skills</h2>
     <div class="skills-grid">
       <div class="sblock reveal"><h4>Machine Learning</h4><p>PyTorch, TensorFlow, scikit-learn · CNNs, Graph Neural Networks, transformers (BERT, RoBERTa, GraphCodeBERT) · multimodal fusion · LoRA &amp; 4-bit quantization · fine-tuning</p></div>
